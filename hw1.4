@@ -1,0 +1,15 @@
+class Solution(object):
+    def minimumAbsDifference(self, arr):
+        otvet = [] 
+        arr.sort() 
+        otvet = [arr[:2]] 
+        minimum = abs(arr[1] - arr[0])
+        for i in range(2, len(arr)): 
+            a = arr[i - 1:i + 1] 
+            if abs(a[1] - a[0]) < minimum: 
+                otvet = [a] 
+                minimum = abs(a[1] - a[0]) 
+            elif abs(a[1] - a[0]) == minimum: 
+                otvet.append(a) 
+                otvet.sort() 
+        return otvet 
