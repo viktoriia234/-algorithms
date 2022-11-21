@@ -1,0 +1,34 @@
+n = 3
+m = 3
+
+# Функция для возврата количества
+# квадратные подматрицы со всеми единицами
+def countSquareMatrices(a, N, M):
+    # Начать переменную счетчика
+    count = 0
+
+    for i in range(1, N):
+        for j in range(1, M):
+
+            # Если a[i][j] равно 0
+            if (a[i][j] == 0):
+                continue
+
+            # Подсчитать количество
+            # квадратные подматрицы
+            # заканчивается на (i, j)
+            a[i][j] = min([a[i - 1][j],
+                           a[i][j - 1], a[i - 1][j - 1]]) + 1
+
+    # Вычислить сумму массива
+    for i in range(N):
+        for j in range(M):
+            count += a[i][j]
+
+    return count
+
+arr = [[1, 0, 1],
+       [1, 1, 0],
+       [1, 1, 0]]
+
+print(countSquareMatrices(arr, n, m))
